@@ -10,7 +10,15 @@ BASE_URL = "https://nbrviewer-ebynf4piupeqipdew7egah.streamlit.app"  # seu app p
 # Lê parâmetros da URL
 qp = st.query_params()
 if "id" in qp:
-    st.success(f"Você acessou o link com ID: **{qp['id'][0]}**")
+    id_val = qp['id'][0]
+    # Mostra conteúdo específico se o id for exatamente 'xpto'
+    if id_val == "d0c9ba68":
+        st.success("🛡️ Você acessou o link secreto **xpto**!")
+        st.info("Conteúdo especial: este é um teste que mostra algo diferente quando o id é 'xpto'.")
+        # Pequeno toque visual para destacar o caso especial
+        st.balloons()
+    else:
+        st.success(f"Você acessou o link com ID: **{id_val}**")
 else:
     # Gera um link novo
     if st.button("Gerar novo link"):
