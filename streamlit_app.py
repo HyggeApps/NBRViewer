@@ -8,7 +8,7 @@ st.title("🔗 Teste de geração de links aleatórios")
 BASE_URL = "https://nbrviewer-ebynf4piupeqipdew7egah.streamlit.app"  # seu app publicado
 
 # Lê parâmetros da URL
-qp = st.experimental_get_query_params()
+qp = st.query_params()
 if "id" in qp:
     st.success(f"Você acessou o link com ID: **{qp['id'][0]}**")
 else:
