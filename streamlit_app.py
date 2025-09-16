@@ -21,7 +21,7 @@ else:
     qp = {}
 
 if "id" in qp:
-    id_val = qp['id'][0]
+    id_val = qp['id']
     # Mostra conteúdo específico se o id for exatamente 'xpto'
     if id_val == "d0c9ba68":
         st.success("🛡️ Você acessou o link secreto **xpto**!")
