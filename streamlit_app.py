@@ -7,8 +7,18 @@ st.title("🔗 Teste de geração de links aleatórios")
 
 BASE_URL = "https://nbrviewer-ebynf4piupeqipdew7egah.streamlit.app"  # seu app publicado
 
-# Lê parâmetros da URL
-qp = st.query_params()
+# Lê parâmetros da URL (compat: não chame a QueryParamsProxy como função)
+if hasattr(st, "query_params"):
+    # Em versões recentes, `st.query_params` é uma propriedade/objeto (QueryParamsProxy)
+    # que não é chamável. Se por acaso for uma função, chamamos; caso contrário, usamos direto.
+    qp_attr = st.query_params
+    qp = qp_attr() if callable(qp_attr) else qp_attr
+elif hasattr(st, "get_query_params"):
+    qp = st.get_query_params()
+elif hasattr(st, "experimental_get_query_params"):
+    qp = st.experimental_get_query_params()
+else:
+    qp = {}
 
 if "id" in qp:
     id_val = qp['id'][0]
