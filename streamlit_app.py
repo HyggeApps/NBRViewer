@@ -8,7 +8,8 @@ st.title("🔗 Teste de geração de links aleatórios")
 BASE_URL = "https://nbrviewer-ebynf4piupeqipdew7egah.streamlit.app"  # seu app publicado
 
 # Lê parâmetros da URL
-qp = st.experimental_get_query_params()
+qp = st.query_params()
+
 if "id" in qp:
     id_val = qp['id'][0]
     # Mostra conteúdo específico se o id for exatamente 'xpto'
